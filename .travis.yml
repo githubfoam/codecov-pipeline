@@ -89,12 +89,12 @@ matrix:
       arch: amd64
       sudo: false         
       language: ruby
-      rvm:
-        - 2.5
-        - 2.6
-        - 2.7
-        - jruby
-        - jruby-9.2
+      # rvm:
+      #   - 2.5
+      #   - 2.6
+      #   - 2.7
+      #   - jruby
+      #   - jruby-9.2
       before_install:
         - cd ruby-pipeline/app3
       script:
