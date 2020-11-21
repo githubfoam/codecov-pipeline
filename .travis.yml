@@ -81,6 +81,7 @@ matrix:
     #     - bash <(curl -s https://codecov.io/bash)
     #     - deactivate
 
+#TEST OK     
 # https://github.com/simplecov-ruby/simplecov  SimpleCov code coverage analysis tool   
 # https://rspec.info/ RSpec BDD test framework
 # https://www.ruby-lang.org/en/    
@@ -91,11 +92,11 @@ matrix:
       sudo: false         
       language: ruby
       rvm:
-        # - 2.5
-        # - 2.6
+        - 2.5
+        - 2.6
         - 2.7
-        # - jruby
-        # - jruby-9.2
+        - jruby
+        - jruby-9.2
       before_install:
         - cd ruby-pipeline/app2
       script:
