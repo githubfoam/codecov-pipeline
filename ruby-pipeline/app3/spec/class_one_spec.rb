@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'class_one'
 
-describe ClassOne do
+describe Class_one do
 
   describe "covered" do
     it "returns 'covered'" do
