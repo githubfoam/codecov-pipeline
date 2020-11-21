@@ -1,4 +1,4 @@
-class_one.rbclass ClassOne
+class Class_one
 
   def self.covered
     "covered"
@@ -7,3 +7,5 @@ class_one.rbclass ClassOne
   def self.uncovered
     "uncovered"
   end
+
+end

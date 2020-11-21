@@ -85,31 +85,6 @@ matrix:
 # https://github.com/simplecov-ruby/simplecov  SimpleCov code coverage analysis tool   
 # https://rspec.info/ RSpec BDD test framework
 # https://www.ruby-lang.org/en/    
-    - name: "build ruby w simplecov rspec on bionic arm64"
-      os: linux 
-      dist: bionic
-      arch: amd64
-      sudo: false         
-      language: ruby
-      rvm:
-        - 2.5
-        - 2.6
-        - 2.7
-        - jruby
-        - jruby-9.2
-      before_install:
-        - cd ruby-pipeline/app2
-      script:
-        - bundle install
-        - bundle exec rspec
-      after_success:
-        - bash <(curl -s https://codecov.io/bash)
-        - deactivate
-
-#TEST NOT OK  
-# https://github.com/simplecov-ruby/simplecov    
-# https://rspec.info/
-# https://www.ruby-lang.org/en/    
     # - name: "build ruby w simplecov rspec on bionic arm64"
     #   os: linux 
     #   dist: bionic
@@ -123,10 +98,35 @@ matrix:
     #     - jruby
     #     - jruby-9.2
     #   before_install:
-    #     - cd ruby-pipeline/app3
+    #     - cd ruby-pipeline/app2
     #   script:
     #     - bundle install
     #     - bundle exec rspec
     #   after_success:
     #     - bash <(curl -s https://codecov.io/bash)
     #     - deactivate
+
+#TEST NOT OK  
+# https://github.com/simplecov-ruby/simplecov    
+# https://rspec.info/
+# https://www.ruby-lang.org/en/    
+    - name: "build ruby w simplecov rspec on bionic arm64"
+      os: linux 
+      dist: bionic
+      arch: amd64
+      sudo: false         
+      language: ruby
+      rvm:
+        - 2.5
+        - 2.6
+        - 2.7
+        - jruby
+        - jruby-9.2
+      before_install:
+        - cd ruby-pipeline/app3
+      script:
+        - bundle install
+        - bundle exec rspec
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
+        - deactivate
