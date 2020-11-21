@@ -60,25 +60,26 @@ matrix:
     #     - bash <(curl -s https://codecov.io/bash)
     #     - deactivate
 
-    - name: "build ruby w mocha rubocop webmock codecov on bionic arm64"
-      os: linux 
-      dist: bionic
-      arch: amd64
-      sudo: false         
-      language: ruby
-      rvm:
-        - 2.5
-        - 2.6
-        - 2.7
-        - jruby
-        - jruby-9.2
-      before_install:
-        - cd ruby-pipeline/app1
-      script:
-        - bundle exec rake
-      after_success:
-        - bash <(curl -s https://codecov.io/bash)
-        - deactivate
+#TEST OK    
+    # - name: "build ruby w mocha rubocop webmock codecov on bionic arm64"
+    #   os: linux 
+    #   dist: bionic
+    #   arch: amd64
+    #   sudo: false         
+    #   language: ruby
+    #   rvm:
+    #     - 2.5
+    #     - 2.6
+    #     - 2.7
+    #     - jruby
+    #     - jruby-9.2
+    #   before_install:
+    #     - cd ruby-pipeline/app1
+    #   script:
+    #     - bundle exec rake
+    #   after_success:
+    #     - bash <(curl -s https://codecov.io/bash)
+    #     - deactivate
 
 # https://github.com/simplecov-ruby/simplecov    
 # https://rspec.info/

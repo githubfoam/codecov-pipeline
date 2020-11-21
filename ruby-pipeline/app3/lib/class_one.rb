@@ -7,5 +7,3 @@ class_one.rbclass ClassOne
   def self.uncovered
     "uncovered"
   end
-
-end
