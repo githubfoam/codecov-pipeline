@@ -1,0 +1,72 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
+jobs:
+  
+  build-virtualenv:
+    executor: python/default
+    steps:
+      - checkout
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
+      - run:
+          name: Create virtualenv
+          command: |
+            python -V
+            python3 -V
+            pip3 --version
+            pip3 install virtualenv
+            virtualenv -p $(which python3) ~venvpy3
+            source ~venvpy3/bin/activate
+            pip install -r requirements.txt
+  
+  build-gradle:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    working_directory: ~/repo         
+    steps:
+      - setup_remote_docker        
+      - run:
+          name: "OS fingerprinting - Debian GNU/Linux 10 (buster) x86_64"
+          command: |
+            # System has not been booted with systemd as init system (PID 1). Can't operate.
+            # hostnamectl status
+            uname -a
+            #lsb_release -a #lsb_release: command not found
+            #lsb_release -d  #display the description
+            #cat /etc/lsb-release #/etc/lsb-release: No such file or directory
+            cat /etc/issue
+            cat /etc/os-release
+      - checkout
+      - run:
+          name: "build gradle w findbugs blackduckcopilot  on bionic arm64"
+          command: |
+            echo "=============================deploy kubectl============================================================="
+            java -version
+            gradle -v
+            cd gradle-pipeline && chmod +x gradlew
+            ./gradlew jacocoTestReport
+      - deploy:
+          name: "upload codecov"
+          command: bash <(curl -s https://codecov.io/bash)
+
+workflows:
+  version: 2
+  commit-parallel-workflow:
+    jobs:
+      - build-virtualenv
+      - build-gradle
+  scheduled-workflow:
+    triggers:
+      - schedule:        
+          cron: "0 0 1 * *" # execute in the first minute of the month
+          filters:
+            branches:
+              only: 
+              - feature_gradle
+    jobs:
+      - build-virtualenv
+      - build-gradle
