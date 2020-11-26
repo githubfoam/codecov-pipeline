@@ -32,12 +32,7 @@ jobs:
       - run:
           name: "OS fingerprinting - Debian GNU/Linux 10 (buster) x86_64"
           command: |
-            # System has not been booted with systemd as init system (PID 1). Can't operate.
-            # hostnamectl status
             uname -a
-            #lsb_release -a #lsb_release: command not found
-            #lsb_release -d  #display the description
-            #cat /etc/lsb-release #/etc/lsb-release: No such file or directory
             cat /etc/issue
             cat /etc/os-release
       - checkout
