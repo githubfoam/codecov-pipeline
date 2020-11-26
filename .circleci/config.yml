@@ -58,7 +58,7 @@ workflows:
   scheduled-workflow:
     triggers:
       - schedule:        
-          cron: "0 0 1 * *" # execute in the first minute of the month
+          cron: "0,15,30,45 * * * *" # three times every hour, at minutes 0, 15, 30, 45, e.g 20:00 20:15 20:30 20:45
           filters:
             branches:
               only: 
