@@ -42,13 +42,14 @@ jobs:
             cat /etc/os-release
       - checkout
       - run:
-          name: "build gradle w findbugs blackduckcopilot  on bionic arm64"
+          name: "build gradle w findbugs codecov on - Debian GNU/Linux 10 (buster) x86_64"
           command: |
-            echo "=============================deploy kubectl============================================================="
+            echo "=============================build gradle w findbugs codecov============================================================="
             java -version
             gradle -v
             cd gradle-pipeline && chmod +x gradlew
             ./gradlew jacocoTestReport
+            echo "=============================build gradle w findbugs codecov============================================================="
       - deploy:
           name: "upload codecov"
           command: bash <(curl -s https://codecov.io/bash)
