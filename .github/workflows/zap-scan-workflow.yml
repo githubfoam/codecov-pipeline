@@ -1,0 +1,28 @@
+
+
+name: "OWASP ZAP Full Scan workflow"
+
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month
+
+jobs:
+
+# https://github.com/marketplace/actions/owasp-zap-baseline-scan
+  linux-zap-scan-job:
+    name: "OWASP ZAP Full Scan workflow"
+    runs-on: ubuntu-latest #Ubuntu 18.04.5 LTS
+    steps:
+    # - name: Checkout
+    #   uses: actions/checkout@v1
+    - name: "os fingerprinting"
+      run: hostnamectl status
+    - name: "ZAP Scan"
+      uses: zaproxy/action-baseline@v0.4.0
+      with:
+        target: 'https://www.zaproxy.org'      
