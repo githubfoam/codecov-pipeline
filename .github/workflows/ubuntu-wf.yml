@@ -69,4 +69,11 @@ jobs:
           cd app2 && gradle -q upper    
     - name: "Build scripts are code kotlin"
       run: |
-          cd app2 && gradle -q upper                       
+          cd app2 && gradle -q upper     
+    # https://docs.gradle.org/current/userguide/tutorial_using_tasks.html          
+    - name: "Default tasks groovy"
+      run: |
+          cd app3 && gradle -q  
+    - name: "Default tasks kotlin"
+      run: |
+          cd app3 && gradle -q
