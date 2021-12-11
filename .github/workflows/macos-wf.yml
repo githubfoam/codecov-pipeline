@@ -11,8 +11,8 @@ on:
 
 jobs:
 
-  windows:
-    runs-on: windows-latest
+  macos-latest:
+    runs-on: macos-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v1

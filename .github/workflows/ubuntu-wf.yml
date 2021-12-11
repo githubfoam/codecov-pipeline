@@ -81,4 +81,9 @@ jobs:
       run: |
           cd app4 && gradle tasks 
           gradle -q
-                  
+          gradle
+    - name: "Gradle sample - Verification tasks"
+      run: |
+          cd app4 && gradle tasks 
+          gradle check
+          gradle test    
