@@ -29,9 +29,23 @@ jobs:
         echo "                 ||     ||                                                         "
         echo "===================================================================================="   
     # https://docs.gradle.org/current/userguide/test_kit.html
-    - name: "use the TestKit"
+    # - name: "use the TestKit"
+    #   run: |
+    #       cd app5 && gradle -q
+    # - name: "Declaring the JUnit dependency"
+    #   run: |
+    #       cd app6 && gradle -q            
+    # https://docs.gradle.org/current/samples/index.html 
+    # https://docs.gradle.org/current/samples/sample_building_java_applications.html
+    # https://docs.gradle.org/current/userguide/build_init_plugin.html
+    # https://docs.gradle.org/current/samples/sample_building_java_applications.html
+    - name: "Building Java Applications Sample Groovy"
       run: |
-          cd app5 && gradle -q
-    - name: "Declaring the JUnit dependency"
+          mkdir demo && cd demo
+          gradle init --project-name demo --type java-application --dsl Groovy
+          ./gradlew run
+    - name: "Building Java Applications Sample Kotlin"
       run: |
-          cd app6 && gradle -q   
+          mkdir demo && cd demo
+          gradle init --project-name demo --type java-application --dsl Kotlin
+          ./gradlew run          
