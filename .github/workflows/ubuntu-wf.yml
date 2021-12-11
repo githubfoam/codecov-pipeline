@@ -80,4 +80,5 @@ jobs:
     - name: "Gradle sample"
       run: |
           cd app4 && gradle tasks 
-          gradle -q        
+          gradle -q
+                  
