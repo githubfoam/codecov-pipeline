@@ -1,0 +1,35 @@
+
+name: "ubuntu gradle Testing Build Logic with TestKit CI workflow"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month
+
+jobs:
+
+  ubuntu-latest-gradle-script:
+    name: "build gradle scripts"
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "osfingerprinting"
+      run: |
+        echo "===================================================================================="
+                                  hostnamectl status
+        echo "===================================================================================="
+        echo "         \   ^__^                                                                  "
+        echo "          \  (oo)\_______                                                          "
+        echo "             (__)\       )\/\                                                      "
+        echo "                 ||----w |                                                         "
+        echo "                 ||     ||                                                         "
+        echo "===================================================================================="   
+    # https://docs.gradle.org/current/userguide/test_kit.html
+    - name: "use the TestKit"
+      run: |
+          cd app1 && gradle -q
+   
