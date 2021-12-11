@@ -41,7 +41,7 @@ jobs:
 
 
   ubuntu-latest-gradle-script:
-    name: "build gradle w findbugs codecov"
+    name: "build gradle scripts"
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -57,6 +57,6 @@ jobs:
         echo "                 ||----w |                                                         "
         echo "                 ||     ||                                                         "
         echo "===================================================================================="   
-    - name: "osfingerprinting"
+    - name: "holamundo task"
       run: |
           cd app1 && gradle -q holamundo        

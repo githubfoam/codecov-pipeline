@@ -21,4 +21,7 @@ jobs:
             echo "=============================build gradle w findbugs codecov============================================================="
             java -version
             gradle -v
+    - name: "holamundo task"
+      run: |
+          cd app1 && gradle -q holamundo              
 
