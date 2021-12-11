@@ -42,10 +42,13 @@ jobs:
     - name: "Building Java Applications Sample Groovy"
       run: |
           mkdir demo && cd demo
-          gradle init --project-name demo --type java-application --dsl Groovy
+          gradle init --project-name demo --type java-application --dsl groovy
           ./gradlew run
     - name: "Building Java Applications Sample Kotlin"
       run: |
           mkdir demo && cd demo
-          gradle init --project-name demo --type java-application --dsl Kotlin
-          ./gradlew run          
+          gradle init --project-name demo --type java-application --dsl kotlin
+          echo "==================Run the application=================================================================="   
+          ./gradlew run        
+          echo "==================Bundle the application=================================================================="              
+          ./gradlew build 
