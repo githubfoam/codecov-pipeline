@@ -1,0 +1,59 @@
+
+name: "windows Building C++ Applications CI workflow"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month
+
+jobs:
+
+  ubuntu-latest-gradle-script:
+    name: "build gradle scripts"
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "osfingerprinting"
+      run: |
+        echo "===================================================================================="
+                                  hostnamectl status
+        echo "===================================================================================="
+        echo "         \   ^__^                                                                  "
+        echo "          \  (oo)\_______                                                          "
+        echo "             (__)\       )\/\                                                      "
+        echo "                 ||----w |                                                         "
+        echo "                 ||     ||                                                         "
+        echo "===================================================================================="   
+    - name: "Building Java Applications Sample Groovy"
+      run: |
+          mkdir demo && cd demo
+          gradle init --project-name demo --type cpp-application --dsl groovy
+          # gradle init --project-name demo --type cpp-application --dsl groovy --test-framework junit-jupiter
+          # gradle init --project-name demo --type cpp-application --dsl groovy --test-framework spock
+          # gradle init --project-name demo --type cpp-application --dsl groovy --test-framework testng
+          echo "==================Run the application=================================================================="   
+          ./gradlew run
+          echo "==================Bundle the application=================================================================="              
+          ./gradlew build           
+          echo "==================Publish a Build Scan=================================================================="              
+          ./gradlew build --scan
+          cat app/build.gradle
+
+    - name: "Building Java Applications Sample Kotlin"
+      run: |
+          mkdir demo && cd demo
+          gradle init --project-name demo --type cpp-application --dsl kotlin
+          # gradle init --project-name demo --type cpp-application --dsl kotlin --test-framework junit-jupiter
+          # gradle init --project-name demo --type cpp-application --dsl kotlin --test-framework spock
+          # gradle init --project-name demo --type cpp-application --dsl kotlin --test-framework testng
+          echo "==================Run the application=================================================================="   
+          ./gradlew run        
+          echo "==================Bundle the application=================================================================="              
+          ./gradlew build 
+          echo "==================Publish a Build Scan=================================================================="              
+          ./gradlew build --scan
+          cat app/build.gradle.kts          
