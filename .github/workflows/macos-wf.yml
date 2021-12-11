@@ -1,5 +1,5 @@
 
-name: "macos codecov-pipeline CI workflow"
+name: "macos gradle CI workflow"
 
 on:
   push:
@@ -43,5 +43,8 @@ jobs:
           cd app3 && gradle -q   
     - name: "Gradle sample"
       run: |
-          cd app4 && gradle tasks             
+          cd app4 && gradle tasks  
+    - name: "Gradle sample"
+      run: |
+          cd app4 && gradle tasks                      
 
