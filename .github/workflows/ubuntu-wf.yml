@@ -77,3 +77,6 @@ jobs:
     - name: "Default tasks kotlin"
       run: |
           cd app3 && gradle -q
+    - name: "Gradle sample"
+      run: |
+          cd app4 && gradle tasks         
