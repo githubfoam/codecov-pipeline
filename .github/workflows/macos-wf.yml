@@ -1,0 +1,25 @@
+
+name: "macos codecov-pipeline CI workflow"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron:  '0 0 1 * *' ##execution of a task in the first minute of the month
+
+jobs:
+
+  windows:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "build gradle w findbugs codecov"
+      run: |
+            echo "=============================build gradle w findbugs codecov============================================================="
+            java -version
+            gradle -v
+
+
