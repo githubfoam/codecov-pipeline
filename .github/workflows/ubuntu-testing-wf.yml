@@ -1,5 +1,5 @@
 
-name: "ubuntu gradle Testing Build Logic with TestKit CI workflow"
+name: "ubuntu Testing Build Logic with TestKit CI workflow"
 
 on:
   push:
@@ -31,5 +31,7 @@ jobs:
     # https://docs.gradle.org/current/userguide/test_kit.html
     - name: "use the TestKit"
       run: |
-          cd app1 && gradle -q
-   
+          cd app5 && gradle -q
+    - name: "Declaring the JUnit dependency"
+      run: |
+          cd app6 && gradle -q   
