@@ -11,7 +11,8 @@ on:
 
 jobs:
 
-  linux:
+  ubuntu-latest-gradle-findbugs-codecov:
+    name: "build gradle w findbugs codecov"
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -37,3 +38,25 @@ jobs:
             echo "=============================build gradle w findbugs codecov============================================================="
     - name: "upload codecov"
       run: bash <(curl -s https://codecov.io/bash)
+
+
+  ubuntu-latest-gradle-script:
+    name: "build gradle w findbugs codecov"
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "osfingerprinting"
+      run: |
+        echo "===================================================================================="
+                                  hostnamectl status
+        echo "===================================================================================="
+        echo "         \   ^__^                                                                  "
+        echo "          \  (oo)\_______                                                          "
+        echo "             (__)\       )\/\                                                      "
+        echo "                 ||----w |                                                         "
+        echo "                 ||     ||                                                         "
+        echo "===================================================================================="   
+    - name: "osfingerprinting"
+      run: |
+          cd app1 && gradle -q holamundo        
