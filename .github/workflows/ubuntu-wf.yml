@@ -57,6 +57,9 @@ jobs:
         echo "                 ||----w |                                                         "
         echo "                 ||     ||                                                         "
         echo "===================================================================================="   
-    - name: "holamundo task"
+    - name: "holamundo task groovy"
       run: |
-          cd app1 && gradle -q holamundo        
+          cd app1 && gradle -q holamundo    
+    - name: "holamundo task kotlin"
+      run: |
+          cd app1 && gradle -q holamundo               
