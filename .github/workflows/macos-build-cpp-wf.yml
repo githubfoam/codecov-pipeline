@@ -11,23 +11,12 @@ on:
 
 jobs:
 
-  ubuntu-latest-gradle-script:
-    name: "build gradle scripts"
+  Groovy-ubuntu-latest-gradle-script:
+    name: "Building Java Applications Sample Groovy"
     runs-on: macos-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: "osfingerprinting"
-      run: |
-        echo "===================================================================================="
-                                  hostnamectl status
-        echo "===================================================================================="
-        echo "         \   ^__^                                                                  "
-        echo "          \  (oo)\_______                                                          "
-        echo "             (__)\       )\/\                                                      "
-        echo "                 ||----w |                                                         "
-        echo "                 ||     ||                                                         "
-        echo "===================================================================================="   
     - name: "Building Java Applications Sample Groovy"
       run: |
           mkdir demo && cd demo
@@ -42,7 +31,14 @@ jobs:
           echo "==================Publish a Build Scan=================================================================="              
           ./gradlew build --scan
           cat app/build.gradle
+         
 
+  Kotlin-ubuntu-latest-gradle-script:
+    name: "Building Java Applications Sample Kotlin"
+    runs-on: macos-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
     - name: "Building Java Applications Sample Kotlin"
       run: |
           mkdir demo && cd demo
