@@ -1,3 +1,4 @@
+*.gradle
 *.gem
 *.rbc
 /.config
